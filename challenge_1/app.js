@@ -34,7 +34,6 @@ var getId = (id) => {
             if(count === 8){
             if(checkDraw()) {
                 alert(`${p1} AND ${p2} HAVE DRAWN!`)
-                playerwins()
                 end()
             }
         }
@@ -51,7 +50,6 @@ var getId = (id) => {
             if(count === 8){
             if(checkDraw()) {
                 alert(`${p1} AND ${p2} HAVE DRAWN!`)
-                playerwins()
                 end()
             }
         }
@@ -118,6 +116,7 @@ var checkCol = (sign) => {
 var checkDraw = () => {
     var arrX = [];
     var arrY = [];
+    round++
         for (let i = 0; i < grid.length; i++) {
             if(grid[i] === 1) {
                 arrX.push(1)
@@ -126,7 +125,7 @@ var checkDraw = () => {
             }
         }
 
-        
+        document.getElementById('round').innerHTML = `Round : ${round}`
     return arrX.length === arrY.length
 }
 
