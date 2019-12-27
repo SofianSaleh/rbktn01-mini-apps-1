@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <link rel="stylesheet" href="style.css">
     <title>Tic Tac Toe</title>
 </head>
 <body>
@@ -27,24 +28,32 @@
             <div class="tiles"></div>
         </div> -->
         
-        <table>
+        <table class="game">
+
             <tr class="row">
-              <th class="tiles">a</th>
-              <th class="tiles">a</th>
-              <th class="tiles">a</th>
-            </tr class="row">
+                <td class="tile"  onclick="getId(this.id)" id="0">a</td>
+                <td class="tile"  onclick="getId(this.id)" id="1">a</td>
+                <td class="tile"  onclick="getId(this.id)" id="2">a</td>
+              </tr>
+
             <tr class="row">
-              <td class="tiles">a</td>
-              <td class="tiles">a</td>
-              <td class="tiles">a</td>
+              <td class="tile"  onclick="getId(this.id)" id="3">a</td>
+              <td class="tile"  onclick="getId(this.id)" id="4">a</td>
+              <td class="tile"  onclick="getId(this.id)" id="5">a</td>
             </tr>
+
             <tr class="row">
-              <td class="tiles">a</td>
-              <td class="tiles">a</td>
-              <td class="tiles">a</td>
+              <td class="tile"  onclick="getId(this.id)" id="6">a</td>
+              <td class="tile"  onclick="getId(this.id)" id="7">a</td>
+              <td class="tile"  onclick="getId(this.id)" id="8">a</td>
             </tr>
+
           </table>
 
+    </div>
+
+    <div class="panel">
+        <button type="reset" id="rest">RESET</button>
     </div>
     <script src="app.js"></script>
 </body>
