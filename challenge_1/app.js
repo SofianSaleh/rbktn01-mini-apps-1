@@ -2,8 +2,8 @@
 // alert("<input></input>","Player One Name");
 // window.alert("Player Two Name");
 
-let p1 = prompt('Player Name', 'Player One')
-let p2 = prompt('Player Name', 'Player Two')
+let p1 = prompt('Player 1 Name', 'Player One')
+let p2 = prompt('Player 2 Name', 'Player Two')
 var p1Score = 0;
 var p2Score = 0;
 let count = 0;
@@ -28,11 +28,16 @@ var getId = (id) => {
 
             if (checkRowsDiag('X') || checkCol('X')) {
                 playerWins('X')
-                console.log('winner x')
-                for (let i = 0; i < grid.length; i++) {
-                    grid[i] = 1
-                }
+                alert(`${p1} WINS!`)
+                end();
             }
+            if(count === 8){
+            if(checkDraw()) {
+                alert(`${p1} AND ${p2} HAVE DRAWN!`)
+                playerwins()
+                end()
+            }
+        }
         }
     } else {
         if (main(id, 'O')) {
@@ -40,12 +45,17 @@ var getId = (id) => {
             count++;
             if (checkRowsDiag('O') || checkCol('O')) {
                 playerWins('O')
-                console.log('win o')
-                for (let i = 0; i < grid.length; i++) {
-                    grid[i] = 1
-                }
+                alert(`${p2} WINS!`)
+                end()
+            }
+            if(count === 8){
+            if(checkDraw()) {
+                alert(`${p1} AND ${p2} HAVE DRAWN!`)
+                playerwins()
+                end()
             }
         }
+    }
     }
 
 }
@@ -56,14 +66,12 @@ var main = (id, sign) => {
     if (grid[id] === 0) {
         if (sign === 'X') {
             grid[id] = 1
-            console.log(grid)
         } else if (sign === 'O') {
             grid[id] = 2
-            console.log(grid)
         }
         return true
     } else {
-        console.log('position taken')
+        alert('POSITION TAKEN')
         return false
     }
 }
@@ -107,9 +115,23 @@ var checkCol = (sign) => {
     return false
 }
 
-// var checkDraw =
+var checkDraw = () => {
+    var arrX = [];
+    var arrY = [];
+        for (let i = 0; i < grid.length; i++) {
+            if(grid[i] === 1) {
+                arrX.push(1)
+            }else if(grid[i] === 2) {
+                arrY.push(2)
+            }
+        }
+
+        
+    return arrX.length === arrY.length
+}
 
 var clean = () => {
+    count = 0;
     var x = document.getElementsByClassName('tile')
     for (let k = 0; k < grid.length; k++) {
         x[k].innerHTML = '-'
@@ -117,7 +139,7 @@ var clean = () => {
     }
 }
 
-var playerWins = (sign) => {
+var playerWins = (sign = null) => {
     round++
     if(sign === 'X'){
         p1Score++
@@ -127,4 +149,10 @@ var playerWins = (sign) => {
         document.getElementById('p2').innerHTML = `${p2} : ${p2Score}`
     }
     document.getElementById('round').innerHTML = `Round : ${round}`
+}
+
+var end = () => {
+    for (let i = 0; i < grid.length; i++) {
+        grid[i] = 1
+    }
 }
