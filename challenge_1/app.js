@@ -1,9 +1,10 @@
+// Main variables
 let count = 0;
 var grid = [0, 0 ,0 ,0, 0 ,0 ,0, 0 ,0]
 let rows = 3
 
 
-
+// function that gets the id form html and changes the divs to either x or o
 var getId = (id) => {
     var x = document.getElementsByClassName('tile');
     if( count % 2 === 0 ){
@@ -14,6 +15,7 @@ var getId = (id) => {
 
          if(checkRowsColDiag('X')) {
             console.log('winner x')
+
         }
             
     
@@ -28,7 +30,7 @@ var getId = (id) => {
         }
 }
 }
-
+// Main function that checks and changes the array to either 1 or 2
 var main = (id, sign) => {
 
     if(grid[id] === 0) {
@@ -45,7 +47,7 @@ var main = (id, sign) => {
         return false
     }
 }
-
+// Checker function checks rows columns and diagonal
 var checkRowsColDiag = (sign) => {
     for (let i = 0; i < 8; i = i + 3) {
         if(sign === 'X'){
@@ -55,7 +57,7 @@ var checkRowsColDiag = (sign) => {
             if(grid[i] === 1 && grid[i+3] === 1 && grid[i+6] === 1){
             return true
             }
-            if(grid[0] === 1 && grid[4] === 1 && grid[8] === 1){
+            if(grid[0] === 1 && grid[4] === 1 && grid[8] === 1 || grid[2] === 1 && grid[4] === 1 && grid[6] === 1)){
                 return true
             }
         }else if(sign === 'O'){
@@ -65,7 +67,7 @@ var checkRowsColDiag = (sign) => {
             if(grid[i] === 2 && grid[i+3] === 2 && grid[i+6] === 2){
                 return true
             }
-            if(grid[0] === 2 && grid[4] === 2 && grid[8] === 2){
+            if((grid[0] === 2 && grid[4] === 2 && grid[8] === 2) || grid[2] === 2 && grid[4] === 2 && grid[6] === 2)){
                 return true
             }
         }
