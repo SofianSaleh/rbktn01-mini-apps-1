@@ -8,31 +8,30 @@
 </head>
 <body>
     <h1>Tick Tack Toe</h1>
-
-    <div>
-
-
-    </div>
-    <div>
+    <h4 id="p1"></h4>
+    <h4 id="p2"></h4>
+    <h4 id="round"></h4>
+ 
+    <div id="game">
         
-        <table class="game">
+        <table class="gameBoard">
 
             <tr class="row">
-                <td class="tile"  onclick="getId(this.id)" id="0">a</td>
-                <td class="tile"  onclick="getId(this.id)" id="1">a</td>
-                <td class="tile"  onclick="getId(this.id)" id="2">a</td>
+                <td class="tile"  onclick="getId(this.id)" id="0">-</td>
+                <td class="tile"  onclick="getId(this.id)" id="1">-</td>
+                <td class="tile"  onclick="getId(this.id)" id="2">-</td>
               </tr>
 
             <tr class="row">
-              <td class="tile"  onclick="getId(this.id)" id="3">a</td>
-              <td class="tile"  onclick="getId(this.id)" id="4">a</td>
-              <td class="tile"  onclick="getId(this.id)" id="5">a</td>
+              <td class="tile"  onclick="getId(this.id)" id="3">-</td>
+              <td class="tile"  onclick="getId(this.id)" id="4">-</td>
+              <td class="tile"  onclick="getId(this.id)" id="5">-</td>
             </tr>
 
             <tr class="row">
-              <td class="tile"  onclick="getId(this.id)" id="6">a</td>
-              <td class="tile"  onclick="getId(this.id)" id="7">a</td>
-              <td class="tile"  onclick="getId(this.id)" id="8">a</td>
+              <td class="tile"  onclick="getId(this.id)" id="6">-</td>
+              <td class="tile"  onclick="getId(this.id)" id="7">-</td>
+              <td class="tile"  onclick="getId(this.id)" id="8">-</td>
             </tr>
 
           </table>
@@ -40,7 +39,10 @@
     </div>
 
     <div class="panel">
-        <button type="reset" id="rest">RESET</button>
+        <center>
+
+            <button type="reset" id="reset" onclick="clean()">RESET</button>
+        </center>
     </div>
     <script src="app.js"></script>
 </body>
