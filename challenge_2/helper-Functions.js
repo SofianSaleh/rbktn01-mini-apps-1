@@ -11,7 +11,7 @@ var dataToArray = (data1) => {
 
     }
     dataArr.push(elem)
-    console.log(element)
+    // console.log(element)
     for (let i = 0; i < element['children'].length; i++) {
       varsData(element['children'][i])
     }
@@ -32,7 +32,7 @@ var valuesOfObject = (array, obj) => {
   var values = Object.keys(obj);
   values = values.slice(0, values.length - 1).join(',')
   var string = values + "\n" + str;
-  console.log(string)
+  // console.log(string)
   return string
 }
 
