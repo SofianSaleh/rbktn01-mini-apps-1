@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const apps = require('./client/app.js')
+const helper = require('./helper-Functions.js')
 const fs = require("fs");
 const port = 3000
 const app = express()
@@ -21,49 +22,24 @@ app.listen(PORT, () => console.log(`App is listening on port: ${PORT}`));
 
 
 var dataArr = []
+///////////////////////// P O S T ///////////////////////////////////
 app.post('/upload_json', urlencodedParser, function (req, res) {
   data = JSON.parse(req.body.JSON);
 
-  var dataToArray = (data1) => {
-    var varsData = (element) => {
+  var f = helper.dataToArray(data)
+  var j = helper.valuesOfObject(f, data)
 
-      var elem = {}
-
-      for (var key in element) {
-        if (key !== 'children') {
-          elem[key] = element[key]
-        }
-
+    fs.writeFile("test.csv", j, function(err) {
+      if(err) {
+          return console.log(err);
       }
-      dataArr.push(elem)
-      console.log(element)
-      for (let i = 0; i < element['children'].length; i++) {
-        varsData(element['children'][i])
-      }
-    }
-    varsData(data1)
-  }
-  dataToArray(data)
-  console.log(dataArr);
+      console.log("The file was saved!");
+  }); 
   res.sendStatus(200)
 })
-
+////////////////////////////////////////////////////////
 app.get("/upload_json", (req, res) => {
-  var str = '';
-  for (let j = 0; j < dataArr.length; j++) {
-    var str1 = '';
-    for (var key in dataArr[i]) {
-      str1 += dataArr[i][key] + ','
-    }
-    str += str1.slice(0, 1) + '\n'
-  }
-  fs.writeFile("samples/test.txt", "hello", function(err) {
-    if(err) {
-        return console.log(err);
-    }
-    console.log("The file was saved!");
-}); 
-  res.send(str)
+
 })
 
 
