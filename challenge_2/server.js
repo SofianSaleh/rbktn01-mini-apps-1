@@ -19,13 +19,12 @@ app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`App is listening on port: ${PORT}`));
-
-
+////////////////////// V A R I A B L E S ////////////////////////////////////
 var dataArr = []
 ///////////////////////// P O S T ///////////////////////////////////
 app.post('/upload_json', urlencodedParser, function (req, res) {
   data = JSON.parse(req.body.JSON);
-
+  
   var f = helper.dataToArray(data)
   var j = helper.valuesOfObject(f, data)
 
@@ -34,12 +33,13 @@ app.post('/upload_json', urlencodedParser, function (req, res) {
           return console.log(err);
       }
       console.log("The file was saved!");
-  }); 
+  });
   res.sendStatus(200)
 })
-////////////////////////////////////////////////////////
-app.get("/upload_json", (req, res) => {
 
-})
+////////////////////////////////////////////////////////
+// app.post("/download", urlencodedParser, (req, res) => {
+//   res.sendStatus(200).download(Object.values(req.body.download).join(''));
+// })
 
 
