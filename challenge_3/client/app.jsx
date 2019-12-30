@@ -1,6 +1,7 @@
+// MAIN CLASS APP WHICH HAS 4 FUNCYIONS WITH RENDER FUNCTION WHICH TOGGLES BETWEEN FORMS
+
 class App extends React.Component {
     constructor() {
-        // console.log('g')
         super()
         this.state = {
             Checkout: true,
@@ -16,7 +17,6 @@ class App extends React.Component {
         this.setState({
             checkout: false,
             formOne: true,
-            count: 1
         });
     }
     handleFormOne(data) {
@@ -54,7 +54,6 @@ class App extends React.Component {
 
         const checkOut = (
             <div>
-                {/* <script>{console.log('h')}</script> */}
                 <h1> CHECK OUT</h1>
                 <button onClick={this.handleCheckOut.bind(this)}>Checkout</button>
             </div>
@@ -72,7 +71,7 @@ class App extends React.Component {
     }
 }
 
-
+// FORM ONE CLASS WHICH GETS THE VALUE OF THE INPUT AREA AND PUTS IT IN AN OBJECT AND THEN GIVES IT BACK TO THE MAIN OBJECT
 class FormOne extends React.Component {
     constructor(props) {
         super(props);
@@ -98,19 +97,32 @@ class FormOne extends React.Component {
             <div>
                 <h1>USER INFO</h1>
                 <div>
-                    <label htmlFor="name">Name</label>
-                    <input type="text" name="Name" id="Name" onChange={this.handleChange.bind(this)} placeholder="Enter full name" required />
+                    <label htmlFor="name">Name: </label>
+                    <br />
+                    <br />
+                    <input type="text" name="Name" id="Name" onChange={this.handleChange.bind(this)} placeholder="Enter full name" required/>
+                    <hr />
                 </div>
                 <div>
-                    <label htmlFor="email">Email address</label>
-                    <input type="text" name="Email" id="Email" onChange={this.handleChange.bind(this)} placeholder="Enter email" required />
+                    <label htmlFor="email">Email address: </label>
+                    <br />
+                    <br />
+                    <input type="text" name="Email" id="Email" onChange={this.handleChange.bind(this)} placeholder="Enter email" required/>
+                    <hr />
+                    <br />
                 </div>
                 <div>
-                    <label htmlFor="password">Password</label>
-                    <input type="text" name="Password" id="Password" onChange={this.handleChange.bind(this)} placeholder="Enter password" required />
+                    <label htmlFor="password">Password: </label>
+                    <br />
+                    <br />
+                    <input type="text" name="Password" id="Password" onChange={this.handleChange.bind(this)} placeholder="Enter password" required/>
+                    <hr />
+                    <br />
                 </div>
                 <div>
+                    <hr />
                     <button type="submit" onClick={this.handleClick.bind(this)}>Next</button>
+                    <br />
                 </div>
             </div>
         )
@@ -121,11 +133,11 @@ class FormTwo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            Line_1: '', 
-            Line_2: '', 
-            City: '', 
-            State: '', 
-            Zip_code: '', 
+            Line_1: '',
+            Line_2: '',
+            City: '',
+            State: '',
+            Zip_code: '',
             Phone_number: ''
         };
     }
@@ -147,32 +159,51 @@ class FormTwo extends React.Component {
                 <h1>USER INFO</h1>
                 <div>
                     <label htmlFor="Address">Address </label>
-                    <input type="line_1" name="line_1" id="Line_1" onChange={this.handleChange.bind(this)} placeholder="Enter Address line 1" required />
-                    <input type="line_2" name="line_2" id="Line_2" onChange={this.handleChange.bind(this)} placeholder="Enter Address line 2" required />
+                    <br />
+                    <br />
+                    <input type="line_1" name="line_1" id="Line_1" onChange={this.handleChange.bind(this)} placeholder="Enter Address line 1" required/>
+
+                    <input type="line_2" name="line_2" id="Line_2" onChange={this.handleChange.bind(this)} placeholder="Enter Address line 2" required/>
+                    <hr />
                 </div>
 
                 <div>
                     <label htmlFor="city">City</label>
-                    <input type="city" name="city" id="City" onChange={this.handleChange.bind(this)} placeholder="Enter city name" required />
+                    <br />
+                    <br />
+                    <input type="city" name="city" id="City" onChange={this.handleChange.bind(this)} placeholder="Enter city name" required/>
+                    <hr />
                 </div>
 
                 <div>
                     <label htmlFor="state">State</label>
+                    <br />
+                    <br />
                     <input type="state" name="state" id="State" onChange={this.handleChange.bind(this)} placeholder="Enter state" />
+                    <hr />
                 </div>
 
                 <div>
                     <label htmlFor="zip_code">Zip Code</label>
+                    <br />
+                    <br />
                     <input type="zip_code" name="zip_code" id="Zip_code" onChange={this.handleChange.bind(this)} placeholder="Enter Zip Code" />
+                    <hr />
                 </div>
 
                 <div>
                     <label htmlFor="phone_number">Phone Number</label>
+                    <br />
+                    <br />
                     <input type="phone_number" name="phone_number" id="Phone_number" onChange={this.handleChange.bind(this)} placeholder="Enter Phone Number" />
+                    <hr />
                 </div>
 
                 <div>
+                    <br />
+                    <br />
                     <button type="submit" onClick={this.handleClick.bind(this)}>Next</button>
+                    <hr />
                 </div>
             </div>
         )
@@ -206,18 +237,30 @@ class FormThree extends React.Component {
                 <h1>USER INFO</h1>
                 <div>
                     <label htmlFor="expiry_date">Expiry date: </label>
-                    <input type="date" name="Expiry_date" id="Expiry_date" onChange={this.handleChange.bind(this)} placeholder="Enter Credit Card Expiry Date" required />
+                    <br />
+                    <br />
+                    <input type="date" name="Expiry_date" id="Expiry_date" onChange={this.handleChange.bind(this)} placeholder="Enter Credit Card Expiry Date" required/>
+                    <hr />
                 </div>
                 <div>
                     <label htmlFor="CVV">CVV: </label>
-                    <input type="CVV" name="CVV" id="CVV" onChange={this.handleChange.bind(this)} placeholder="Enter CVV" required />
+                    <br />
+                    <br />
+                    <input type="CVV" name="CVV" id="CVV" onChange={this.handleChange.bind(this)} placeholder="Enter CVV" required/>
+                    <hr />
                 </div>
                 <div>
                     <label htmlFor="password">Billing address: </label>
-                    <input type="text" name="Billing_address" id="Billing_address" onChange={this.handleChange.bind(this)} placeholder="Enter password" required />
+                    <br />
+                    <br />
+                    <input type="text" name="Billing_address" id="Billing_address" onChange={this.handleChange.bind(this)} placeholder="Enter password" required/>
+                    <hr />
                 </div>
                 <div>
+                    <br />
+                    <br />
                     <button type="submit" onClick={this.handleClick.bind(this)}>Next</button>
+                    <hr />
                 </div>
             </div>
         )
@@ -232,17 +275,19 @@ class Done extends React.Component {
         return (
             <div>
                 <h1>Thank you for shopping with us her is your information</h1>
-                <div>
-                    <table>
-                        <td>
-                        <tr>Name: {this.props.data.Name}</tr>
-                        </td>
-                        <td>
-                        <tr>Email: {this.props.data.Email}</tr>
-                        </td>
-                    </table>
-                </div>
-                    
+
+                <p>Name: {this.props.data.Name}</p>
+                <p>Email: {this.props.data.Email}</p>
+                <p>Line 1: {this.props.data.Line_1}</p>
+                {this.props.data.Line_2 ? <p>Line 2:{this.props.data.Line_2}</p> : <p>Line 2:null </p>}
+                <p>City: {this.props.data.City}</p>
+                <p>State: {this.props.data.State}</p>
+                <p>Zip_code: {this.props.data.Zip_code}</p>
+                <p>Phone number: {this.props.data.Phone_number}</p>
+                <p>Expiry date: {this.props.data.Expiry_date}</p>
+                <p>CVV: {this.props.data.CVV}</p>
+                <p>Billing address: {this.props.data.Billing_address}</p>
+
             </div>
         )
     }
