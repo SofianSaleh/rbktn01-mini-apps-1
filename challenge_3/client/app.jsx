@@ -31,7 +31,7 @@ class App extends React.Component {
     }
     handleFormTwo(data) {
         var obj = Object.assign({}, this.state.allData, data);
-        console.log(data, obj)
+        // console.log(data, obj)
         this.setState({
             allData: obj,
             formTwo: false,
@@ -45,8 +45,8 @@ class App extends React.Component {
         this.setState({
             allData: obj,
             formThree: false,
-            Submit: true
-        }, ()=> console.log(this.state.allData));
+            done: true
+        });
 
     }
     render() {
@@ -66,7 +66,7 @@ class App extends React.Component {
                 {this.state.formOne ? <FormOne handleFormOne={this.handleFormOne.bind(this)} /> : null}
                 {this.state.formTwo ? <FormTwo handleFormTwo={this.handleFormTwo.bind(this)} /> : null}
                 {this.state.formThree ? <FormThree handleFormThree={this.handleFormThree.bind(this)} /> : null}
-                {this.state.completed ? <Done user={this.state.user} /> : null}
+                {this.state.done ? <Done data={this.state.allData} /> : null}
             </div>
         )
     }
@@ -196,7 +196,7 @@ class FormThree extends React.Component {
 
     handleClick() {
         var data = this.state;
-        console.log(data)
+        // console.log(data)
         this.props.handleFormThree(data);
     }
     render() {
@@ -233,7 +233,14 @@ class Done extends React.Component {
             <div>
                 <h1>Thank you for shopping with us her is your information</h1>
                 <div>
-                    Name: {this.props.allData.Name}
+                    <table>
+                        <td>
+                        <tr>Name: {this.props.data.Name}</tr>
+                        </td>
+                        <td>
+                        <tr>Email: {this.props.data.Email}</tr>
+                        </td>
+                    </table>
                 </div>
                     
             </div>
