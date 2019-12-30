@@ -6,7 +6,7 @@ class App extends React.Component {
             Checkout: true,
             formOne: false,
             formTwo: false,
-            FormThree: false,
+            formThree: false,
             allData: {},
             user: {},
             count: 0
@@ -36,14 +36,14 @@ class App extends React.Component {
     handleFormTwo(data) {
         this.setState({
             allData: data,
-            FormTwo: false,
-            FormThree: true
+            formTwo: false,
+            formThree: true
         });
     }
 
     handleSubmit() {
         this.setState({
-            FormThree: false,
+            formThree: false,
             Submit: true
         });
 
@@ -58,18 +58,12 @@ class App extends React.Component {
                     <button onClick={this.handleCheckOut.bind(this)}>Checkout</button>
                 </div>
             );
-       
-        // <script>{console.log(this.state.allData)}</script>
-        <script>{console.log(this.state.count)}</script>
-        // const formOne = ;
-        // const formTwo = ;
-        // const formThree =;
         return (
             <div>
                 {this.state.Checkout ? checkOut : null}
                 {this.state.formOne ? <FormOne handleFormOne={this.handleFormOne.bind(this)} /> : null}
                 {this.state.formTwo ? <FormTwo handleFormTwo={this.handleFormTwo.bind(this)} /> : null}
-                {this.state.formThree ?  <FormThree handleFormTwo={this.handleSubmit.bind(this)} /> : null}
+                {this.state.formThree ? <FormThree handleFormTwo={this.handleSubmit.bind(this)} /> : null}
                 {this.state.completed ? <Done user={this.state.user} /> : null}
             </div>
         )
@@ -144,7 +138,7 @@ class FormTwo extends React.Component {
         this.props.handleFormTwo(data);
     }
     render() {
-        const { line_1, line_2, city, state, zip_code, phone_number } = this.state;
+        const { Line_1, Line_2, City, State, Zip_code, Phone_number } = this.state;
         return (
             <div>
 
@@ -199,10 +193,10 @@ class FormThree extends React.Component {
   
   handleClick() {
       var data = this.state;
-      this.props.handleFormOne(data);
+      this.props.handleFormThree(data);
   }
   render() {
-      const { expiry_date, CVV, billing_address } = this.state;
+      const { Expiry_date, CVV, Billing_address } = this.state;
       return (
           <div>
               <div>
