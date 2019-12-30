@@ -115,7 +115,7 @@ class FormOne extends React.Component {
                     <label htmlFor="password">Password: </label>
                     <br />
                     <br />
-                    <input type="text" name="Password" id="Password" onChange={this.handleChange.bind(this)} placeholder="Enter password" required/>
+                    <input type="password" name="Password" id="Password" onChange={this.handleChange.bind(this)} placeholder="Enter password" required/>
                     <hr />
                     <br />
                 </div>
@@ -171,7 +171,7 @@ class FormTwo extends React.Component {
                     <label htmlFor="city">City</label>
                     <br />
                     <br />
-                    <input type="city" name="city" id="City" onChange={this.handleChange.bind(this)} placeholder="Enter city name" required/>
+                    <input type="text" name="city" id="City" onChange={this.handleChange.bind(this)} placeholder="Enter city name" required/>
                     <hr />
                 </div>
 
@@ -179,7 +179,7 @@ class FormTwo extends React.Component {
                     <label htmlFor="state">State</label>
                     <br />
                     <br />
-                    <input type="state" name="state" id="State" onChange={this.handleChange.bind(this)} placeholder="Enter state" />
+                    <input type="text" name="state" id="State" onChange={this.handleChange.bind(this)} placeholder="Enter state" />
                     <hr />
                 </div>
 
@@ -187,7 +187,7 @@ class FormTwo extends React.Component {
                     <label htmlFor="zip_code">Zip Code</label>
                     <br />
                     <br />
-                    <input type="zip_code" name="zip_code" id="Zip_code" onChange={this.handleChange.bind(this)} placeholder="Enter Zip Code" />
+                    <input type="text" name="zip_code" id="Zip_code" onChange={this.handleChange.bind(this)} placeholder="Enter Zip Code" />
                     <hr />
                 </div>
 
@@ -195,7 +195,7 @@ class FormTwo extends React.Component {
                     <label htmlFor="phone_number">Phone Number</label>
                     <br />
                     <br />
-                    <input type="phone_number" name="phone_number" id="Phone_number" onChange={this.handleChange.bind(this)} placeholder="Enter Phone Number" />
+                    <input type="number" name="phone_number" id="Phone_number" onChange={this.handleChange.bind(this)} placeholder="Enter Phone Number" />
                     <hr />
                 </div>
 
@@ -246,11 +246,11 @@ class FormThree extends React.Component {
                     <label htmlFor="CVV">CVV: </label>
                     <br />
                     <br />
-                    <input type="CVV" name="CVV" id="CVV" onChange={this.handleChange.bind(this)} placeholder="Enter CVV" required/>
+                    <input type="number" name="CVV" id="CVV" onChange={this.handleChange.bind(this)} placeholder="Enter CVV" required/>
                     <hr />
                 </div>
                 <div>
-                    <label htmlFor="password">Billing address: </label>
+                    <label htmlFor="Billing">Billing address: </label>
                     <br />
                     <br />
                     <input type="text" name="Billing_address" id="Billing_address" onChange={this.handleChange.bind(this)} placeholder="Enter password" required/>
@@ -271,6 +271,20 @@ class Done extends React.Component {
     constructor(props) {
         super(props);
     }
+    handleSubmit() {
+        console.log(this.props.data)
+        $.ajax({
+            url: '/user',
+            method: 'POST',
+            data: this.props.data,
+            success: (data) => {
+                console.log(`yes ${data}`)
+            },
+            error: () => {
+                console.log('error')
+            }
+        })
+    }
     render() {
         return (
             <div>
@@ -287,7 +301,7 @@ class Done extends React.Component {
                 <p>Expiry date: {this.props.data.Expiry_date}</p>
                 <p>CVV: {this.props.data.CVV}</p>
                 <p>Billing address: {this.props.data.Billing_address}</p>
-
+            <button type="submit" onClick={this.handleSubmit.bind(this)}>Submit</button>
             </div>
         )
     }

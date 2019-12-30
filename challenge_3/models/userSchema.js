@@ -1,19 +1,18 @@
 const mongoose = require("mongoose");
+
 const userSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  password: String,
-  // address: addressSchema,
-  // card: cardSchema
-  street: String,
-  city: String,
-  state: String,
-  zipCode: String,
+  name: {type: String, required: true},
+  email: {type: String, required: true},
+  password: {type: String, required: true},
+  street: {type: String, required: true},
+  city: {type: String, required: true},
+  state: {type: String, required: true},
+  zipCode: {type: String, required: true},
   phone: String,
-  cardNumber: String,
-  expiration: String,
-  cvv: String,
-  cardZip: String
+  cardNumber: {type: Number, required: true},
+  expiration: {type: Date, required: true},
+  cvv: {type: Number, required: true},
+  Billing_address: {type: String, required: true}
 });
 
 module.exports = mongoose.model("User", userSchema);
