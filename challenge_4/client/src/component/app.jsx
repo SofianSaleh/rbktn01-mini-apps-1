@@ -8,41 +8,34 @@ class App extends Component {
         this.state = {
             player1: 1,
             player2: 2,
-            current: null,
+            current: this.setState.player1,
             board: [],
             gameOver: false,
             message: ''
         }
     }
+
+///////////////////////////////////////     h e l p e r     f u n c t i o n s       ///////////////////////////////////
     // initialize board dynamicaly
     intitalaizeBoard() {
-        let board = [];
         for (let r = 0; r < 6; r++) {
             var row = []
             for (let c = 0; c < 7; c++) {
                 row.push(null)
             }
-            board.push(row)
+            this.state.board.push(row)
+            // console.log(this.state.board)
         }
-        this.setState({
-            board,
-            currentPlayer: this.state.player1,
-        });
     }
+    // this.setState({
+    //     board: board,
+    //     currentPlayer: this.state.player1,
+    // });
     // toggle player function
     togglePlayer() {
         return (this.state.current === this.state.player1) ? this.state.player2 : this.state.player2;
     }
-    // change the board once clicked
-    play(c) {
-        if (!this.state.gameOver) {
-            for (let r = 5; r >= 0; r--) {
-                if (!board[r][c]) {
-                    board[c][r] = this.state.currentPlayer
-                }
-            }
-        }
-    }
+ 
     // Check vertical
 
     checkVertical(board) {
@@ -161,19 +154,20 @@ class App extends Component {
             }
         }
     }
+///////////////////////////////////////     E N D       h e l p e r        f u n c t i o n s       ///////////////////////////////////
+UNSAFE_componentWillMount(){
+    this.intitalaizeBoard();
+ 
 
-    UNSAFE_componentWillMount() {
-
-        this.intitalaizeBoard();
-    }
+}
     render() {
-
 
         return (
             <div>
-                <button id="Start" onClick={this.intitalaizeBoard()}>New Game</button>
+                {/* <button id="Start" onClick={this.intitalaizeBoard()}>New Game</button> */}
                 <table>
                     <tbody>
+                        
                         {this.state.board.map((row, index) => {
                             <Row key={index} row={row} playGame={this.playGame.bind(this)} />
                         })}
@@ -185,8 +179,5 @@ class App extends Component {
     }
 }
 
+
 export default App;
-
-
-
-
